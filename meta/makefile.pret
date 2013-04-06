@@ -1,0 +1,8 @@
+# This file provides instructions for packaging.
+
+`FreeMind-Document`
+	perl_version_from m`FreeMind::Document`;
+	version_from      m`FreeMind::Document`;
+	readme_from       m`FreeMind::Document` ;
+	.
+
