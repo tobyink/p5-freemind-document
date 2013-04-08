@@ -96,7 +96,68 @@ FreeMind::Document - representation of a FreeMind-style mind map document
 
 =head1 SYNOPSIS
 
+ my $document = "FreeMind::Document"->load(location => "todo.mm");
+ 
+ my ($node) = $document->findnodes(q{//node[@ID="foo"]});
+ 
+ print $node->toText, "\n";
+
 =head1 DESCRIPTION
+
+This is a subclass of L<XML::LibXML::Document> providing the following
+additional methods:
+
+=over
+
+=item C<< load($type, $source) >>
+
+Constructor. If C<< $type >> is C<< "IO" >> then C<< $source >> should be a
+filehandle. If C<< $type >> is C<< "location" >> then C<< $source >> should
+be a file name or URL. If If C<< $type >> is C<< "string" >> then
+C<< $source >> should be a scalar string containing XML.
+
+If the XML being loaded is a FreeMind mind map document, returns an instance
+of FreeMind::Document. Otherwise returns an instance of XML::LibXML::Document.
+
+=item C<< root >>
+
+Returns the centre-most node of the mind map as a L<FreeMind::Node>.
+
+=item C<< toHash >>
+
+C<< $document->toHash >> is a shortcut for C<< $document->root->toHash >>.
+
+=item C<< toText($indent, $width) >>
+
+C<< $document->toText >> is a shortcut for C<< $document->root->toText >>.
+
+=back
+
+As this is an XML::LibXML::Document, you have all the standard methods for
+traversing the document such as C<findnodes> and C<getElementsByTagName>,
+but the elements returned by these methods will be L<FreeMind::Map>,
+L<FreeMind::Node>, etc objects rather than L<XML::LibXML::Element> objects.
+
+The XML elements provide accessors for XML attributes. For example, given
+this XML element:
+
+   <node
+      CREATED="1365159476220"
+      ID="ID_326312292"
+      MODIFIED="1365441636185"
+      POSITION="right"
+      TEXT="documentation" />
+
+You can call C<< $element->created >> to get the element's creation date
+as an integer (incidentally, that's milliseconds since the Unix epoch).
+Call it with an argument to write to the attribute:
+
+   $element->created(1000 * time());
+
+To remove the attribute, pass an explicit C<undef> as an argument. These
+attribute accessors perform a limited amount of validation. The standard
+XML::LibXML::Element C<getAttribute>, C<setAttribute> and C<removeAttribute>,
+but these will perform no validation.
 
 =head1 BUGS
 
@@ -104,6 +165,10 @@ Please report any bugs to
 L<http://rt.cpan.org/Dist/Display.html?Queue=FreeMind-Document>.
 
 =head1 SEE ALSO
+
+L<http://freemind.sourceforge.net/wiki/index.php/Main_Page>.
+
+L<FreeMind::Map>, L<FreeMind::Node>.
 
 =head1 AUTHOR
 
@@ -115,7 +180,6 @@ This software is copyright (c) 2013 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
-
 
 =head1 DISCLAIMER OF WARRANTIES
 

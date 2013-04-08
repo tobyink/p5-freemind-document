@@ -67,3 +67,73 @@ sub toText
 }
 
 1;
+
+
+__END__
+
+=pod
+
+=encoding utf-8
+
+=head1 NAME
+
+FreeMind::Document - a FreeMind C<< <node> >> XML element
+
+=head1 DESCRIPTION
+
+This is a subclass of L<XML::LibXML::Element> providing the following
+attribute accessors:
+
+=over
+
+=item C<< background_color >>
+
+=item C<< color >>
+
+=item C<< folded >>
+
+=item C<< id >>
+
+=item C<< link >>
+
+=item C<< position >>
+
+=item C<< style >>
+
+=item C<< text >>
+
+=item C<< created >>
+
+=item C<< modified >>
+
+=item C<< hgap >>
+
+=item C<< vgap >>
+
+=item C<< vshift >>
+
+=item C<< encrypted_content >>
+
+=back
+
+=head1 SEE ALSO
+
+L<FreeMind::Document>, L<FreeMind::Map>.
+
+=head1 AUTHOR
+
+Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
+
+=head1 COPYRIGHT AND LICENCE
+
+This software is copyright (c) 2013 by Toby Inkster.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=head1 DISCLAIMER OF WARRANTIES
+
+THIS PACKAGE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF
+MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+
