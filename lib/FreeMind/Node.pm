@@ -42,10 +42,10 @@ sub nodes
 
 sub toHash
 {
-	my @nodes = shift->nodes;
-	my %hash;
-	$hash{$_->text} = $_->toHash for @nodes;
-	\%hash;
+	my $self = shift;
+	return {
+		$self->text => { map %{$_->toHash}, $self->nodes },
+	}
 }
 
 sub toText
