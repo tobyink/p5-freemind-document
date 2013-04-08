@@ -149,15 +149,17 @@ this XML element:
       TEXT="documentation" />
 
 You can call C<< $element->created >> to get the element's creation date
-as an integer (incidentally, that's milliseconds since the Unix epoch).
-Call it with an argument to write to the attribute:
+as an integer. Call it with an argument to write to the attribute:
 
-   $element->created(1000 * time());
+   $element->created($some_time);
 
 To remove the attribute, pass an explicit C<undef> as an argument. These
 attribute accessors perform a limited amount of validation. The standard
 XML::LibXML::Element C<getAttribute>, C<setAttribute> and C<removeAttribute>,
 but these will perform no validation.
+
+(Incidentally, FreeMind dates are milliseconds since the Unix epoch. The
+setters will happily coerce from L<DateTime> objects though.)
 
 =head1 BUGS
 

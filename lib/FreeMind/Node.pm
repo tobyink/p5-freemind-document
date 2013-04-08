@@ -18,20 +18,30 @@ require FreeMind::Document;
 require Types::Standard;
 require Type::Utils;
 
+my $Milliseconds = Types::Standard::Int()
+	-> create_child_type(
+		constraint => sub { $_ >= 0 },
+		inlined    => sub { sprintf '%s and %s >= 0', $_[0]->parent->inline_check($_[1]), $_[1] },
+	)
+	-> plus_coercions(
+		Type::Utils::class_type({class => 'DateTime'}),
+		q{ 1000 * $_->epoch },
+	);
+
 __PACKAGE__->FreeMind::Document::_has(
 	BACKGROUND_COLOR  => { },
 	COLOR             => { },
-	FOLDED            => { isa => Types::Standard::Bool },
+	FOLDED            => { isa => Types::Standard::Bool() },
 	ID                => { },
 	LINK              => { },
 	POSITION          => { isa => Type::Utils::enum(Position => [qw/left right/]) },
 	STYLE             => { },
 	TEXT              => { required => 1 },
-	CREATED           => { isa => Types::Standard::Int },
-	MODIFIED          => { isa => Types::Standard::Int },
-	HGAP              => { isa => Types::Standard::Int },
-	VGAP              => { isa => Types::Standard::Int },
-	VSHIFT            => { isa => Types::Standard::Int },
+	CREATED           => { isa => $Milliseconds },
+	MODIFIED          => { isa => $Milliseconds },
+	HGAP              => { isa => Types::Standard::Int() },
+	VGAP              => { isa => Types::Standard::Int() },
+	VSHIFT            => { isa => Types::Standard::Int() },
 	ENCRYPTED_CONTENT => { },
 );
 
