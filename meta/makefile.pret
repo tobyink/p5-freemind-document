@@ -3,6 +3,11 @@
 `FreeMind-Document`
 	perl_version_from m`FreeMind::Document`;
 	version_from      m`FreeMind::Document`;
-	readme_from       m`FreeMind::Document` ;
+	readme_from       m`FreeMind::Document`;
+	install_script    f`bin/mm2txt`;
+	requires          p`Type::Utils 0.000_08`;
+	requires          p`Types::Standard 0.000_08`;
+	requires          p`XML::LibXML::Augment 0.001`;
+	test_requires     p`Test::LongString 0.15`;
 	.
 
