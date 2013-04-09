@@ -73,6 +73,9 @@ sub toText
 		$self->text,
 	);
 	
+	# WTF?? Why Text::Wrap do this??
+	$text =~ s/\t/        /gsm;
+	
 	join("\n", $text, $self->nodes->map(sub { $_->toText($indent+1, $wrap) }));
 }
 
