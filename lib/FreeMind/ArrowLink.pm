@@ -6,7 +6,7 @@ use warnings;
 
 BEGIN {
 	$FreeMind::ArrowLink::AUTHORITY = 'cpan:TOBYINK';
-	$FreeMind::ArrowLink::VERSION   = '0.001';
+	$FreeMind::ArrowLink::VERSION   = '0.000_01';
 }
 
 use XML::LibXML::Augment
