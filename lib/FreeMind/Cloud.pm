@@ -6,7 +6,7 @@ use warnings;
 
 BEGIN {
 	$FreeMind::Cloud::AUTHORITY = 'cpan:TOBYINK';
-	$FreeMind::Cloud::VERSION   = '0.000_01';
+	$FreeMind::Cloud::VERSION   = '0.001';
 }
 
 use XML::LibXML::Augment
