@@ -1,0 +1,10 @@
+@prefix deps:  <http://ontologi.es/doap-deps#> .
+
+<http://purl.org/NET/cpan-uri/dist/FreeMind-Document/project>
+	deps:runtime-requirement         [ deps:on "Type::Utils 0.000_08"^^deps:CpanId ];
+	deps:runtime-requirement         [ deps:on "Types::Standard 0.000_08"^^deps:CpanId ];
+	deps:runtime-requirement         [
+		deps:on "XML::LibXML::Augment 0.001"^^deps:CpanId;
+	];
+	deps:test-requirement            [ deps:on "Test::LongString 0.15"^^deps:CpanId ].
+
