@@ -6,7 +6,7 @@ use warnings;
 
 BEGIN {
 	$FreeMind::Document::AUTHORITY = 'cpan:TOBYINK';
-	$FreeMind::Document::VERSION   = '0.001';
+	$FreeMind::Document::VERSION   = '0.002';
 }
 
 use XML::LibXML::Augment
